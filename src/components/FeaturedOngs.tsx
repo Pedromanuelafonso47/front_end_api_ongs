@@ -1,55 +1,65 @@
-'use client'
-import { useEffect, useState } from 'react'
+'use client';
+
+import { useEffect, useState } from 'react';
+
+type Ong = {
+  id: number;
+  nome: string;
+  categoria: string;
+  cidade: string;
+  verified: boolean;
+  imagem?: string;
+};
 
 export default function FeaturedOngs() {
-  const [ongs, setOngs] = useState([])
+  const [ongs, setOngs] = useState<Ong[]>([]);
 
   useEffect(() => {
     async function fetchOngs() {
       try {
-        const res = await fetch('/api/ongs') // ajuste se sua rota for diferente
-        const data = await res.json()
-
-        // Embaralha e pega 5 aleatórias
-        const aleatorias = data.sort(() => 0.5 - Math.random()).slice(0, 5)
-        setOngs(aleatorias)
+        const response = await fetch('https://api-ong-research-9.onrender.com/ongs');
+        const data = await response.json();
+        setOngs(data);
       } catch (error) {
-        console.error('Erro ao carregar ONGs:', error)
+        console.error('Erro ao carregar ONGs:', error);
       }
     }
 
-    fetchOngs()
-  }, [])
+    fetchOngs();
+  }, []);
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow max-w-md mx-auto mt-10">
-      <h2 className="text-lg font-bold text-gray-800 mb-4">Destaques</h2>
+    <section className="max-w-4xl mx-auto mt-12 px-4">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">ONGs em Destaque</h2>
 
-      <div className="space-y-3">
-        {ongs.map((ong, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {ongs.map((ong) => (
           <div
-            key={index}
-            className="flex items-center justify-between bg-gray-50 p-3 rounded-lg"
+            key={ong.id}
+            className="bg-white shadow-md rounded-xl p-4 flex items-center gap-4 hover:shadow-lg transition-all"
           >
-            <div className="flex items-center gap-3">
-              {/* Imagem da ONG */}
-              <div className="w-10 h-10 bg-gray-300 rounded-md" />
-              <div>
-                <h3 className="font-medium text-sm text-gray-900">{ong.nome}</h3>
-                <p className="text-xs text-gray-500">{ong.categoria} - {ong.cidade}</p>
-              </div>
+            <img
+              src={ong.imagem || '/img/logo.png'}
+              alt={ong.nome}
+              className="w-16 h-16 object-cover rounded-md"
+            />
+
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                {ong.nome}
+                {ong.verified && (
+                  <span className="text-blue-500" title="ONG verificada">
+                    ✔️
+                  </span>
+                )}
+              </h3>
+              <p className="text-sm text-gray-600">
+                {ong.categoria} · {ong.cidade}
+              </p>
             </div>
-            {ong.verificada && (
-              <div className="flex items-center gap-1 text-xs text-blue-600 font-medium">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-4 h-4" viewBox="0 0 16 16">
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.93 10.588 4.29 8.065l-.637.666L6.93 12l6.718-6.745-.637-.666z"/>
-                </svg>
-                Verificada
-              </div>
-            )}
           </div>
         ))}
       </div>
-    </div>
-  )
+    </section>
+  );
 }
