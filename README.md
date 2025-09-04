@@ -1,40 +1,93 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🌍 Front-end API ONGs
 
-First, run the development server:
+Este projeto é uma aplicação **front-end** desenvolvida em **Next.js**, que consome uma **API de ONGs confiáveis**. O objetivo é permitir que usuários filtrem e encontrem ONGs por **cidade** e **categoria**, exibindo as informações de forma clara, moderna e responsiva.
+
+---
+
+## 🚀 Funcionalidades
+
+* Listagem de ONGs cadastradas na API.
+* Filtro por **cidade** e **categoria**.
+* Modal de **sugestões automáticas** ao digitar.
+* Exibição estilizada das ONGs com **descrição, imagem e detalhes**.
+* Totalmente responsivo (desktop e mobile).
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+front_end_api_ongs/
+│-- app/                 # Páginas e rotas do Next.js
+│-- components/          # Componentes reutilizáveis (ex: FeaturedOngs, Carrossel, etc.)
+│-- public/              # Arquivos estáticos (imagens, ícones, etc.)
+│-- styles/              # Estilos globais
+│-- package.json         # Dependências do projeto
+│-- README.md            # Documentação
+```
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+* [Next.js](https://nextjs.org/)
+* [React](https://react.dev/)
+* [TailwindCSS](https://tailwindcss.com/)
+* [TypeScript](https://www.typescriptlang.org/)
+* [Vercel](https://vercel.com/) (deploy)
+
+---
+
+## ▶️ Como Executar Localmente
+
+1. Clone este repositório:
+
+```bash
+git clone https://github.com/seu-usuario/front_end_api_ongs.git
+cd front_end_api_ongs
+```
+
+2. Instale as dependências:
+
+```bash
+npm install
+# ou
+yarn install
+# ou
+pnpm install
+```
+
+3. Execute o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Abra no navegador: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔗 Conexão com a API
 
-## Learn More
+Este front-end consome dados da **API de ONGs confiáveis** que tu já desenvolveste.
+Basta configurar o **endpoint da API** no código (exemplo em `.env.local`):
 
-To learn more about Next.js, take a look at the following resources:
+```
+NEXT_PUBLIC_API_URL=https://seu-endpoint-da-api.com
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📌 Melhorias Futuras
 
-## Deploy on Vercel
+* Autenticação de usuários.
+* Painel administrativo para cadastro/edição de ONGs.
+* Integração com mapas para localização geográfica.
+* Sistema de doações online.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# front_end_api_ongs
->>>>>>> 278e79616d2f5beb2ed84ff1a72e9e38e62d6a66
+## 👨‍💻 Autor
+
+Projeto desenvolvido por **Pedro Afonso** 🚀
